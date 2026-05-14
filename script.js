@@ -1,248 +1,230 @@
-// ===============================
-// Task 1 — Basic Function
-// ===============================
+// =====================================
+// Task 1 - Student Registration Form
+// =====================================
 
-function welcomeUser(name) {
-    console.log("Welcome " + name);
+let studentName = prompt("Enter Student Name:");
+let department = prompt("Enter Department:");
+let age = prompt("Enter Age:");
+
+console.log(`Welcome ${studentName}`);
+console.log(`Department: ${department}`);
+console.log(`Age: ${age}`);
+
+/*
+Output:
+Welcome Naveen
+Department: CSE
+Age: 20
+*/
+
+
+// =====================================
+// Task 2 - ATM Withdrawal System
+// =====================================
+
+let balance = 10000;
+let amount = Number(prompt("Enter Withdrawal Amount:"));
+
+if (amount >= 100 && amount <= balance) {
+    console.log("Transaction Successful");
+} else if (amount < 100) {
+    console.log("Minimum withdrawal amount is 100");
+} else {
+    console.log("Insufficient Balance");
 }
 
-welcomeUser("Naveen");
+/*
+Output:
+Transaction Successful
+*/
 
 
-// ===============================
-// Task 2 — Parameter + Return
-// ===============================
+// =====================================
+// Task 3 - Swiggy Discount Checker
+// =====================================
 
-function squareNumber(num) {
-    return num * num;
-}
+let orderAmount = Number(prompt("Enter Order Amount:"));
 
-console.log(squareNumber(5));
+let result = orderAmount > 499
+    ? "Free Delivery Available"
+    : "Delivery Charges Applied";
+
+console.log(result);
+
+/*
+Output:
+Free Delivery Available
+*/
 
 
-// ===============================
-// Task 3 — Object Function
-// ===============================
+// =====================================
+// Task 4 - Instagram Login System
+// =====================================
 
-const employee = {
-    name: "Rahul",
-    salary: 50000,
+let username = prompt("Enter Username:");
 
-    employeeBonus: function(bonus) {
-        console.log(this.name);
-        console.log(this.salary + bonus);
+if (username === "admin") {
+
+    let password = prompt("Enter Password:");
+
+    if (password === "1234") {
+        console.log("Login Success");
+    } else {
+        console.log("Wrong Password");
     }
+
+} else {
+    console.log("Invalid Username");
+}
+
+/*
+Output:
+Login Success
+*/
+
+
+// =====================================
+// Task 5 - Traffic Signal System
+// =====================================
+
+let signal = prompt("Enter Signal Color:");
+
+switch (signal) {
+
+    case "red":
+        console.log("STOP");
+        break;
+
+    case "yellow":
+        console.log("READY");
+        break;
+
+    case "green":
+        console.log("GO");
+        break;
+
+    default:
+        console.log("Invalid Signal");
+}
+
+/*
+Output:
+STOP
+*/
+
+
+// =====================================
+// Task 6 - Employee Salary Calculator
+// =====================================
+
+function salaryCalculation(basicSalary, bonus) {
+
+    let totalSalary = basicSalary + bonus;
+
+    return totalSalary;
+}
+
+console.log(salaryCalculation(25000, 5000));
+
+/*
+Output:
+30000
+*/
+
+
+// =====================================
+// Task 7 - E-Commerce Cart Total
+// =====================================
+
+let prices = [100, 200, 300, 400];
+
+let total = 0;
+
+for (let i = 0; i < prices.length; i++) {
+    total += prices[i];
+}
+
+let average = total / prices.length;
+
+console.log("Total Price:", total);
+console.log("Average Price:", average);
+
+/*
+Output:
+Total Price: 1000
+Average Price: 250
+*/
+
+
+// =====================================
+// Task 8 - WhatsApp Contact Book
+// =====================================
+
+let contact = {
+    name: "Naveen",
+    phone: "9876543210",
+    status: "Online"
 };
 
-employee.employeeBonus(5000);
-
-
-// ===============================
-// Task 4 — Scope Checking
-// ===============================
-
-function checkScope() {
-
-    if (true) {
-        var a = "VAR";
-        let b = "LET";
-        const c = "CONST";
-    }
-
-    console.log(a); // Works
-
-    // console.log(b); // Error
-    // console.log(c); // Error
+for (let key in contact) {
+    console.log(key + " : " + contact[key]);
 }
 
-checkScope();
+/*
+Output:
+name : Naveen
+phone : 9876543210
+status : Online
+*/
 
 
-// ===============================
-// Task 5 — Arrow Function
-// ===============================
+// =====================================
+// Task 9 - Movie Ticket Booking
+// =====================================
 
-const add = (a, b) => {
-    console.log(a + b);
-};
-
-add(5, 3);
-
-
-// ===============================
-// Task 6 — Callback Function
-// ===============================
-
-function multiply(a, b) {
-    return a * b;
+function payment() {
+    console.log("Payment Successful");
 }
 
-function calculator(callback, x, y) {
-    console.log(callback(x, y));
+function bookTicket(callback) {
+
+    console.log("Ticket Booking Confirmed");
+
+    callback();
 }
 
-calculator(multiply, 5, 2);
+bookTicket(payment);
+
+/*
+Output:
+Ticket Booking Confirmed
+Payment Successful
+*/
 
 
-// ===============================
-// Task 7 — Generator Function
-// ===============================
+// =====================================
+// Task 10 - Food Delivery Time Tracker
+// =====================================
 
-function* offers() {
-    yield "50% OFF";
-    yield "Free Delivery";
-    yield "Cashback";
+function* deliveryTracker() {
+
+    yield "Order Confirmed";
+    yield "Preparing Food";
+    yield "Out for Delivery";
+    yield "Delivered";
 }
 
-const offer = offers();
+let order = deliveryTracker();
 
-console.log(offer.next().value);
-console.log(offer.next().value);
-console.log(offer.next().value);
+console.log(order.next().value);
+console.log(order.next().value);
+console.log(order.next().value);
+console.log(order.next().value);
 
-
-// ===============================
-// Task 8 — Default Parameter
-// ===============================
-
-function student(name, course = "JavaScript") {
-    console.log(name);
-    console.log(course);
-}
-
-student("Arun");
-student("Vijay", "React");
-
-
-// ===============================
-// Task 9 — Currying
-// ===============================
-
-function multi(a) {
-    return function(b) {
-        return function(c) {
-            return a * b * c;
-        };
-    };
-}
-
-console.log(multi(2)(3)(4));
-
-
-// ===============================
-// Task 10 — Spread Operator
-// ===============================
-
-const arr1 = [1, 2, 3];
-const arr2 = [4, 5, 6];
-
-const mergedArray = [...arr1, ...arr2];
-
-console.log(mergedArray);
-
-
-// ===============================
-// Task 11 — Object Spread
-// ===============================
-
-const obj1 = { name: "Navi" };
-const obj2 = { role: "Developer" };
-
-const mergedObject = { ...obj1, ...obj2 };
-
-console.log(mergedObject);
-
-
-// ===============================
-// Task 12 — Rest Operator
-// ===============================
-
-function numbers(...num) {
-    console.log(num);
-
-    let sum = 0;
-
-    for (let n of num) {
-        sum += n;
-    }
-
-    console.log(sum);
-}
-
-numbers(1, 2, 3, 4);
-
-
-// ===============================
-// Mini Challenge 🔥
-// Student Management System
-// ===============================
-
-const students = [];
-
-// Add Student
-function addStudent(name, marks) {
-
-    const student = {
-        name,
-        marks
-    };
-
-    students.push(student);
-
-    console.log(name + " added successfully");
-}
-
-// Print Students
-function printStudents() {
-
-    console.log("Student List");
-
-    students.forEach((stu, index) => {
-        console.log(
-            index + 1,
-            stu.name,
-            stu.marks
-        );
-    });
-}
-
-// Callback Function
-function calculateMarks(mark) {
-    return mark + 10;
-}
-
-// Add Bonus Marks
-function bonusMarks(callback) {
-
-    const updatedStudents = students.map(student => {
-        return {
-            ...student,
-            marks: callback(student.marks)
-        };
-    });
-
-    console.log("Updated Marks");
-
-    updatedStudents.forEach(student => {
-        console.log(student.name, student.marks);
-    });
-}
-
-// Rest Operator Example
-function totalMarks(...marks) {
-
-    let total = marks.reduce((a, b) => a + b, 0);
-
-    console.log("Total Marks:", total);
-}
-
-
-// Function Calls
-addStudent("Naveen", 80);
-addStudent("Yuganika", 90);
-
-printStudents();
-
-bonusMarks(calculateMarks);
-
-totalMarks(80, 90, 70, 60);
+/*
+Output:
+Order Confirmed
+Preparing Food
+Out for Delivery
+Delivered
+*/
