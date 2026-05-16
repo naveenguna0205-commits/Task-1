@@ -1,230 +1,115 @@
-// =====================================
-// Task 1 - Student Registration Form
-// =====================================
-
-let studentName = prompt("Enter Student Name:");
-let department = prompt("Enter Department:");
-let age = prompt("Enter Age:");
-
-console.log(`Welcome ${studentName}`);
-console.log(`Department: ${department}`);
-console.log(`Age: ${age}`);
-
-/*
-Output:
-Welcome Naveen
-Department: CSE
-Age: 20
-*/
+// ==========================================
+// 5 Real-Time JavaScript Questions
+// Topic : Array + Object + HOF + Spread
+// ==========================================
 
 
-// =====================================
-// Task 2 - ATM Withdrawal System
-// =====================================
+// 1. Student Attendance System
 
-let balance = 10000;
-let amount = Number(prompt("Enter Withdrawal Amount:"));
+let presentStudents = ["Arun", "Kumar", "Priya"];
+let absentStudents = ["Rahul", "Sneha"];
 
-if (amount >= 100 && amount <= balance) {
-    console.log("Transaction Successful");
-} else if (amount < 100) {
-    console.log("Minimum withdrawal amount is 100");
-} else {
-    console.log("Insufficient Balance");
-}
+let allStudents = [...presentStudents, ...absentStudents, "Vijay"];
 
-/*
-Output:
-Transaction Successful
-*/
+console.log("1. Final Students Array:");
+console.log(allStudents);
 
 
-// =====================================
-// Task 3 - Swiggy Discount Checker
-// =====================================
-
-let orderAmount = Number(prompt("Enter Order Amount:"));
-
-let result = orderAmount > 499
-    ? "Free Delivery Available"
-    : "Delivery Charges Applied";
-
-console.log(result);
-
-/*
-Output:
-Free Delivery Available
-*/
+// Output:
+// 1. Final Students Array:
+// [ 'Arun', 'Kumar', 'Priya', 'Rahul', 'Sneha', 'Vijay' ]
 
 
-// =====================================
-// Task 4 - Instagram Login System
-// =====================================
 
-let username = prompt("Enter Username:");
+// 2. E-Commerce Cart
 
-if (username === "admin") {
-
-    let password = prompt("Enter Password:");
-
-    if (password === "1234") {
-        console.log("Login Success");
-    } else {
-        console.log("Wrong Password");
-    }
-
-} else {
-    console.log("Invalid Username");
-}
-
-/*
-Output:
-Login Success
-*/
-
-
-// =====================================
-// Task 5 - Traffic Signal System
-// =====================================
-
-let signal = prompt("Enter Signal Color:");
-
-switch (signal) {
-
-    case "red":
-        console.log("STOP");
-        break;
-
-    case "yellow":
-        console.log("READY");
-        break;
-
-    case "green":
-        console.log("GO");
-        break;
-
-    default:
-        console.log("Invalid Signal");
-}
-
-/*
-Output:
-STOP
-*/
-
-
-// =====================================
-// Task 6 - Employee Salary Calculator
-// =====================================
-
-function salaryCalculation(basicSalary, bonus) {
-
-    let totalSalary = basicSalary + bonus;
-
-    return totalSalary;
-}
-
-console.log(salaryCalculation(25000, 5000));
-
-/*
-Output:
-30000
-*/
-
-
-// =====================================
-// Task 7 - E-Commerce Cart Total
-// =====================================
-
-let prices = [100, 200, 300, 400];
-
-let total = 0;
-
-for (let i = 0; i < prices.length; i++) {
-    total += prices[i];
-}
-
-let average = total / prices.length;
-
-console.log("Total Price:", total);
-console.log("Average Price:", average);
-
-/*
-Output:
-Total Price: 1000
-Average Price: 250
-*/
-
-
-// =====================================
-// Task 8 - WhatsApp Contact Book
-// =====================================
-
-let contact = {
-    name: "Naveen",
-    phone: "9876543210",
-    status: "Online"
+let mobile = {
+    brand: "Samsung",
+    price: 25000
 };
 
-for (let key in contact) {
-    console.log(key + " : " + contact[key]);
+let charger = {
+    type: "Fast Charger",
+    warranty: "1 Year"
+};
+
+let cartDetails = {
+    ...mobile,
+    ...charger,
+    deliveryDate: "20-May-2026"
+};
+
+console.log("\n2. Final Cart Object:");
+console.log(cartDetails);
+
+
+// Output:
+// 2. Final Cart Object:
+// {
+//   brand: 'Samsung',
+//   price: 25000,
+//   type: 'Fast Charger',
+//   warranty: '1 Year',
+//   deliveryDate: '20-May-2026'
+// }
+
+
+
+// 3. Food Delivery App
+
+function orderFood(...items) {
+
+    console.log("\n3. Food Order Details:");
+    console.log("Total items ordered:", items.length);
+    console.log("First item:", items[0]);
+    console.log("Last item:", items[items.length - 1]);
 }
 
-/*
-Output:
-name : Naveen
-phone : 9876543210
-status : Online
-*/
+orderFood("Pizza", "Burger", "Pasta", "Ice Cream");
 
 
-// =====================================
-// Task 9 - Movie Ticket Booking
-// =====================================
-
-function payment() {
-    console.log("Payment Successful");
-}
-
-function bookTicket(callback) {
-
-    console.log("Ticket Booking Confirmed");
-
-    callback();
-}
-
-bookTicket(payment);
-
-/*
-Output:
-Ticket Booking Confirmed
-Payment Successful
-*/
+// Output:
+// 3. Food Order Details:
+// Total items ordered: 4
+// First item: Pizza
+// Last item: Ice Cream
 
 
-// =====================================
-// Task 10 - Food Delivery Time Tracker
-// =====================================
 
-function* deliveryTracker() {
+// 4. Employee Salary Filter
 
-    yield "Order Confirmed";
-    yield "Preparing Food";
-    yield "Out for Delivery";
-    yield "Delivered";
-}
+let employees = [
+    { name: "Ravi", salary: 45000 },
+    { name: "Meena", salary: 60000 },
+    { name: "Ajay", salary: 75000 },
+    { name: "Divya", salary: 40000 }
+];
 
-let order = deliveryTracker();
+let highSalaryEmployees = employees.filter(emp => emp.salary > 50000);
 
-console.log(order.next().value);
-console.log(order.next().value);
-console.log(order.next().value);
-console.log(order.next().value);
+console.log("\n4. Employees with Salary Above 50000:");
+console.log(highSalaryEmployees);
 
-/*
-Output:
-Order Confirmed
-Preparing Food
-Out for Delivery
-Delivered
-*/
+
+// Output:
+// 4. Employees with Salary Above 50000:
+// [
+//   { name: 'Meena', salary: 60000 },
+//   { name: 'Ajay', salary: 75000 }
+// ]
+
+
+
+// 5. Online Game Score Board
+
+let scores = [100, 200, 150, 300, 250];
+
+let totalScore = scores.reduce((total, score) => total + score, 0);
+
+console.log("\n5. Total Score of All Players:");
+console.log(totalScore);
+
+
+// Output:
+// 5. Total Score of All Players:
+// 1000
